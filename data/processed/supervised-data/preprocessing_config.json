@@ -1,0 +1,129 @@
+{
+  "input_file": "/content/drive/MyDrive/data mining/era5_land_algeria_2x2_tidy_corrige.parquet",
+  "test_start": "2024-05-01",
+  "dropped_correlated_vars": [
+    "sshf",
+    "ro",
+    "e"
+  ],
+  "corr_threshold": 0.9,
+  "corr_criterion": "max(|pearson|, |spearman|) >= 0.90 on all rows, features only (no target); in each correlated pair, drop the variable with the larger IQR-outlier percentage (tie -> KEEP_PRIORITY)",
+  "keep_priority": [
+    "ssr",
+    "slhf",
+    "tp",
+    "str",
+    "sshf",
+    "ro",
+    "e",
+    "d2m",
+    "u10",
+    "v10",
+    "sp"
+  ],
+  "corr_pairs_removed": [
+    {
+      "paire": "slhf / e",
+      "Pearson": 0.9999999099598215,
+      "Spearman": 0.9999999966750329,
+      "gardée": "slhf",
+      "%outliers gardée": 16.78242964996568,
+      "supprimée": "e",
+      "%outliers supprimée": 16.78242964996568,
+      "critère": "égalité -> priorité"
+    },
+    {
+      "paire": "ro / tp",
+      "Pearson": 0.53373926702411,
+      "Spearman": 0.9807524488585374,
+      "gardée": "tp",
+      "%outliers gardée": 15.091937118018105,
+      "supprimée": "ro",
+      "%outliers supprimée": 16.235578651501783,
+      "critère": "plus d'outliers"
+    },
+    {
+      "paire": "ssr / sshf",
+      "Pearson": -0.94148124938866,
+      "Spearman": -0.9537959049031228,
+      "gardée": "ssr",
+      "%outliers gardée": 0.0,
+      "supprimée": "sshf",
+      "%outliers supprimée": 0.9258424028499527,
+      "critère": "plus d'outliers"
+    }
+  ],
+  "neg_log_vars": [
+    "slhf"
+  ],
+  "pos_log1p_vars": [
+    "tp"
+  ],
+  "pos_log1p_scale_s": {
+    "tp": 0.018590617924928665
+  },
+  "class_names": [
+    "Froid",
+    "Tempéré",
+    "Chaud"
+  ],
+  "class_edges_celsius": [
+    0.275054931640625,
+    13.859934488932291,
+    27.444814046223957,
+    41.029693603515625
+  ],
+  "features": [
+    "d2m",
+    "slhf",
+    "ssr",
+    "str",
+    "u10",
+    "v10",
+    "sp",
+    "tp",
+    "month",
+    "year",
+    "month_sin",
+    "month_cos"
+  ],
+  "scaled_features": [
+    "d2m",
+    "slhf",
+    "ssr",
+    "str",
+    "u10",
+    "v10",
+    "sp",
+    "tp",
+    "month",
+    "year"
+  ],
+  "unscaled_features": [
+    "month_sin",
+    "month_cos"
+  ],
+  "meta_columns_not_for_training": [
+    "cell_id",
+    "latitude",
+    "longitude",
+    "time",
+    "time_next",
+    "t2m_current"
+  ],
+  "target_columns": [
+    "t2m_next",
+    "y",
+    "y_label"
+  ],
+  "class_percent_train": {
+    "Froid": 16.02978933508887,
+    "Tempéré": 44.85780118499012,
+    "Chaud": 39.112409479921
+  },
+  "class_percent_test": {
+    "Froid": 13.277814351547072,
+    "Tempéré": 38.915734035549704,
+    "Chaud": 47.80645161290323
+  }
+}
